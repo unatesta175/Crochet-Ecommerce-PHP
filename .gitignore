@@ -1,0 +1,55 @@
+# Local History - VS Code
+.history/
+.vscode/
+
+
+# IDE and Editor files
+*.swp
+*.swo
+*~
+.DS_Store
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# PHP
+*.log
+*.cache
+
+# Database
+*.sql
+*.sqlite
+*.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Composer
+vendor/
+composer.lock
+
+# Node modules (if using npm)
+node_modules/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Upload directories (optional - uncomment if needed)
+# uploaded_img/
+# images/
+
