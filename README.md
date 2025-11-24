@@ -9,6 +9,8 @@
 
 **A full-featured e-commerce web application for selling handmade crochet products**
 
+[![Watch Demo Video](https://img.shields.io/badge/▶️_Watch-Demo_Video-red?style=for-the-badge&logo=youtube)](https://youtu.be/FtwKqkeDE5w)
+
 [Features](#features) • [Tech Stack](#tech-stack) • [Installation](#installation) • [Team](#project-team)
 
 </div>
@@ -18,6 +20,8 @@
 ## About The Project
 
 This is a comprehensive e-commerce platform designed specifically for selling handmade crochet products including bags, coasters, hats, and other artisanal crochet items. The platform features a complete shopping experience with user authentication, product management, shopping cart, wishlist, and order tracking capabilities.
+
+**[Watch the Full Demo Video on YouTube](https://youtu.be/FtwKqkeDE5w)**
 
 ### Academic Context
 
@@ -246,7 +250,12 @@ This project was developed for educational purposes as part of the CSC264 course
 
 **Muhammad Ilyas Bin Amran** - Lead Developer & System Analyst
 
-For questions, suggestions, or collaboration opportunities, please reach out through the contact form in the application.
+For questions, suggestions, or collaboration opportunities:
+
+- **LinkedIn**: [Muhammad Ilyas Bin Amran](https://www.linkedin.com/in/muhammad-ilyas-bin-amran/)
+- **GitHub**: [unatesta175](https://github.com/unatesta175)
+- **Email**: muhammadilyasamran@gmail.com
+- **WhatsApp**: +60 11-1104 7614
 
 ---
 
