@@ -21,6 +21,8 @@
 
 This is a comprehensive e-commerce platform designed specifically for selling handmade crochet products including bags, coasters, hats, and other artisanal crochet items. The platform features a complete shopping experience with user authentication, product management, shopping cart, wishlist, and order tracking capabilities.
 
+> **💡 Development Note**: While this was a collaborative group project, I (Muhammad Ilyas Bin Amran) was solely responsible for the complete implementation and coding of the entire system. My teammates contributed significantly to requirements gathering, system analysis, design documentation, and testing. I truly appreciate their support throughout the development process, which allowed me to focus on delivering a robust technical solution.
+
 **[🎥 Watch the Full Demo Video on YouTube](https://youtu.be/FtwKqkeDE5w)**
 
 ### 🎓 Academic Context
@@ -40,10 +42,10 @@ This project was collaboratively developed by a team of four dedicated students:
 
 | Name | Role | Responsibilities |
 |------|------|------------------|
-| **Muhammad Ilyas Bin Amran** | 💻 System Analyst & Lead Programmer | Full-stack development, database design, system architecture, code implementation |
-| **Nurnazatul Maisara Binti Muhammad Firdaus** | 📊 System Analyst 2 | System requirements analysis, workflow design, user stories |
-| **Amirah Aisyah Binti Azman** | 📱 Mobile Web Developer | Responsive design, mobile optimization, UI/UX testing |
-| **Muhamad Aidil Bin Mohd Sukor** | 📝 Documenter | Technical documentation, user manual, project reports |
+| **Muhammad Ilyas Bin Amran** | 💻 System Analyst & Sole Programmer | Complete system implementation, full-stack development, database design, system architecture, all code development |
+| **Nurnazatul Maisara Binti Muhammad Firdaus** | 📊 System Analyst 2 | Requirements gathering, system analysis, workflow design, user stories |
+| **Amirah Aisyah Binti Azman** | 📱 UI/UX Designer | Design mockups, responsive design planning, UI/UX testing |
+| **Muhamad Aidil Bin Mohd Sukor** | 📝 Documenter | Technical documentation, user manual, project reports, testing documentation |
 
 ---
 
