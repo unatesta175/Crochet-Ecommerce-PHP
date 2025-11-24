@@ -13,7 +13,7 @@ if(!isset($admin_id)){
 if(isset($_POST['update_payment'])){
    $order_id = $_POST['order_id'];
    $payment_status = $_POST['payment_status'];
-   $payment_status = filter_var($payment_status, FILTER_SANITIZE_STRING);
+   $payment_status = htmlspecialchars(strip_tags($payment_status), ENT_QUOTES, 'UTF-8');
    $update_payment = $conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
    $update_payment->execute([$payment_status, $order_id]);
    $message[] = 'payment status updated!';
@@ -63,7 +63,7 @@ if(isset($_GET['delete'])){
       <p> number : <span><?= $fetch_orders['number']; ?></span> </p>
       <p> address : <span><?= $fetch_orders['address']; ?></span> </p>
       <p> total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> total price : <span>RM<?= $fetch_orders['total_price']; ?>/-</span> </p>
+      <p> total price : <span>RM<?= $fetch_orders['total_price']; ?></span> </p>
       <p> payment method : <span><?= $fetch_orders['method']; ?></span> </p>
       <form action="" method="post">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">

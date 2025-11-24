@@ -13,15 +13,17 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['submit'])){
 
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $pass = ($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+   $email = htmlspecialchars(strip_tags($email), ENT_QUOTES, 'UTF-8');
+   // Don't sanitize passwords - they are hashed and never displayed
+   $pass = $_POST['pass'];
 
-   $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
-   $select_user->execute([$email, $pass]);
+   // Select user by email only
+   $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
+   $select_user->execute([$email]);
    $row = $select_user->fetch(PDO::FETCH_ASSOC);
 
-   if($select_user->rowCount() > 0){
+   // Verify password using password_verify
+   if($select_user->rowCount() > 0 && password_verify($pass, $row['password'])){
       $_SESSION['user_id'] = $row['id'];
       header('location:home.php');
    }else{
@@ -60,6 +62,8 @@ if(isset($_POST['submit'])){
       <input type="submit" value="login now" class="btn" name="submit">
       <p>don't have an account?</p>
       <a href="user_register.php" class="option-btn">register now</a>
+      <p>are you an admin?</p>
+      <a href="admin/admin_login.php" class="option-btn">admin login</a>
    </form>
 
 </section>

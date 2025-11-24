@@ -69,7 +69,7 @@ if(isset($_SESSION['user_id'])){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h2>[WEBSITE DEVELOPER]</h2>
+         <h2>[ANALYST PROGRAMMER]</h2>
           <h3>MUHAMMAD ILYAS BIN AMRAN</h3>
            <h3>[2020894394]</h3>
           
@@ -85,7 +85,7 @@ if(isset($_SESSION['user_id'])){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-          <h2>[WEBSITE DEVELOPER]</h2>
+          <h2>[SYSTEM ANALYST 1]</h2>
          <h3>NURNAZATUL MAISARA BINTI MUHAMMAD FIRDAUS</h3>
           <h3>[2020604084]</h3>
       </div>
@@ -100,7 +100,7 @@ if(isset($_SESSION['user_id'])){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-          <h2>[MOBILE APPLICATION DEVELOPER]</h2>
+          <h2>[SYSTEM ANALYST 2]</h2>
          <h3>AMIRAH AISYAH BINTI AZMAN </h3>
           <h3>[2020498286]</h3>
       </div>
@@ -115,7 +115,7 @@ if(isset($_SESSION['user_id'])){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-          <h2>[MOBILE APPLICATION DEVELOPER]</h2>
+          <h2>[DOCUMENTER]</h2>
          <h3>MUHAMAD AIDIL BIN MOHD SUKOR </h3>
           <h3>[2020869062]</h3>
       </div>

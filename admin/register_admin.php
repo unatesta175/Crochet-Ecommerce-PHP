@@ -13,11 +13,10 @@ if(!isset($admin_id)){
 if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
-   $pass = ($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-   $cpass = ($_POST['cpass']);
-   $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
+   $name = htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8');
+   // Don't sanitize passwords - they are hashed and never displayed
+   $pass = $_POST['pass'];
+   $cpass = $_POST['cpass'];
 
    $select_admin = $conn->prepare("SELECT * FROM `admins` WHERE name = ?");
    $select_admin->execute([$name]);
@@ -28,8 +27,10 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $message[] = 'confirm password not matched!';
       }else{
+         // Hash the password before storing
+         $hashed_password = password_hash($cpass, PASSWORD_DEFAULT);
          $insert_admin = $conn->prepare("INSERT INTO `admins`(name, password) VALUES(?,?)");
-         $insert_admin->execute([$name, $cpass]);
+         $insert_admin->execute([$name, $hashed_password]);
          $message[] = 'new admin registered successfully!';
       }
    }

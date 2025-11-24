@@ -13,13 +13,13 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['send'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8');
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $email = htmlspecialchars(strip_tags($email), ENT_QUOTES, 'UTF-8');
    $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $number = htmlspecialchars(strip_tags($number), ENT_QUOTES, 'UTF-8');
    $msg = $_POST['msg'];
-   $msg = filter_var($msg, FILTER_SANITIZE_STRING);
+   $msg = htmlspecialchars(strip_tags($msg), ENT_QUOTES, 'UTF-8');
 
    $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
    $select_message->execute([$name, $email, $number, $msg]);
@@ -63,7 +63,7 @@ if(isset($_POST['send'])){
 
    <form action="" method="post">
       <h3>get in touch</h3>
-      <input type="text" name="name" placeholder="enter your name" required maxlength="20" class="box">
+      <input type="text" name="name" placeholder="enter your name" required maxlength="500" class="box">
       <input type="email" name="email" placeholder="enter your email" required maxlength="50" class="box">
       <input type="tel" name="number" min="0" max="9999999999" placeholder="Enter your number" required class="box">
 

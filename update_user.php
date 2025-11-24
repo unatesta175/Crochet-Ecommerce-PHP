@@ -13,32 +13,31 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8');
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $email = htmlspecialchars(strip_tags($email), ENT_QUOTES, 'UTF-8');
 
    $update_profile = $conn->prepare("UPDATE `users` SET name = ?, email = ? WHERE id = ?");
    $update_profile->execute([$name, $email, $user_id]);
 
-   $empty_pass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
    $prev_pass = $_POST['prev_pass'];
-   $old_pass = ($_POST['old_pass']);
-   $old_pass = filter_var($old_pass, FILTER_SANITIZE_STRING);
-   $new_pass = ($_POST['new_pass']);
-   $new_pass = filter_var($new_pass, FILTER_SANITIZE_STRING);
-   $cpass = ($_POST['cpass']);
-   $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
+   // Don't sanitize passwords - they are hashed and never displayed
+   $old_pass = $_POST['old_pass'];
+   $new_pass = $_POST['new_pass'];
+   $cpass = $_POST['cpass'];
 
-   if($old_pass == $empty_pass){
+   if(empty($old_pass)){
       $message[] = 'please enter old password!';
-   }elseif($old_pass != $prev_pass){
+   }elseif(!password_verify($old_pass, $prev_pass)){
       $message[] = 'old password not matched!';
    }elseif($new_pass != $cpass){
       $message[] = 'confirm password not matched!';
    }else{
-      if($new_pass != $empty_pass){
+      if(!empty($new_pass)){
+         // Hash the new password before storing
+         $hashed_new_password = password_hash($cpass, PASSWORD_DEFAULT);
          $update_admin_pass = $conn->prepare("UPDATE `users` SET password = ? WHERE id = ?");
-         $update_admin_pass->execute([$cpass, $user_id]);
+         $update_admin_pass->execute([$hashed_new_password, $user_id]);
          $message[] = 'password updated successfully!';
       }else{
          $message[] = 'please enter a new password!';
@@ -73,7 +72,7 @@ if(isset($_POST['submit'])){
    <form action="" method="post">
       <h3>update now</h3>
       <input type="hidden" name="prev_pass" value="<?= $fetch_profile["password"]; ?>">
-      <input type="text" name="name" required placeholder="enter your username" maxlength="20"  class="box" value="<?= $fetch_profile["name"]; ?>">
+      <input type="text" name="name" required placeholder="enter your username" maxlength="255"  class="box" value="<?= $fetch_profile["name"]; ?>">
       <input type="email" name="email" required placeholder="enter your email" maxlength="50"  class="box" oninput="this.value = this.value.replace(/\s/g, '')" value="<?= $fetch_profile["email"]; ?>">
       <input type="password" name="old_pass" placeholder="enter your old password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="new_pass" placeholder="enter your new password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">

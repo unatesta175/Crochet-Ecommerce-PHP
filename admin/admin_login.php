@@ -7,15 +7,17 @@ session_start();
 if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
-   $pass = ($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+   $name = htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8');
+   // Don't sanitize passwords - they are hashed and never displayed
+   $pass = $_POST['pass'];
 
-   $select_admin = $conn->prepare("SELECT * FROM `admins` WHERE name = ? AND password = ?");
-   $select_admin->execute([$name, $pass]);
+   // Select admin by name only
+   $select_admin = $conn->prepare("SELECT * FROM `admins` WHERE name = ?");
+   $select_admin->execute([$name]);
    $row = $select_admin->fetch(PDO::FETCH_ASSOC);
 
-   if($select_admin->rowCount() > 0){
+   // Verify password using password_verify
+   if($select_admin->rowCount() > 0 && password_verify($pass, $row['password'])){
       $_SESSION['admin_id'] = $row['id'];
       header('location:dashboard.php');
    }else{

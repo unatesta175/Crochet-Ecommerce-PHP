@@ -13,26 +13,26 @@ if(!isset($admin_id)){
 if(isset($_POST['add_product'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8');
    $price = $_POST['price'];
-   $price = filter_var($price, FILTER_SANITIZE_STRING);
+   $price = htmlspecialchars(strip_tags($price), ENT_QUOTES, 'UTF-8');
    $details = $_POST['details'];
-   $details = filter_var($details, FILTER_SANITIZE_STRING);
+   $details = htmlspecialchars(strip_tags($details), ENT_QUOTES, 'UTF-8');
 
    $image_01 = $_FILES['image_01']['name'];
-   $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
+   $image_01 = htmlspecialchars(strip_tags($image_01), ENT_QUOTES, 'UTF-8');
    $image_size_01 = $_FILES['image_01']['size'];
    $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
    $image_folder_01 = '../images/'.$image_01;
 
    $image_02 = $_FILES['image_02']['name'];
-   $image_02 = filter_var($image_02, FILTER_SANITIZE_STRING);
+   $image_02 = htmlspecialchars(strip_tags($image_02), ENT_QUOTES, 'UTF-8');
    $image_size_02 = $_FILES['image_02']['size'];
    $image_tmp_name_02 = $_FILES['image_02']['tmp_name'];
    $image_folder_02 = '../images/'.$image_02;
 
    $image_03 = $_FILES['image_03']['name'];
-   $image_03 = filter_var($image_03, FILTER_SANITIZE_STRING);
+   $image_03 = htmlspecialchars(strip_tags($image_03), ENT_QUOTES, 'UTF-8');
    $image_size_03 = $_FILES['image_03']['size'];
    $image_tmp_name_03 = $_FILES['image_03']['tmp_name'];
    $image_folder_03 = '../images/'.$image_03;
@@ -153,7 +153,7 @@ if(isset($_GET['delete'])){
    <div class="box">
       <img src="../images/<?= $fetch_products['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
-      <div class="price">RM<span><?= $fetch_products['price']; ?></span>/-</div>
+      <div class="price">RM<span><?= $fetch_products['price']; ?></span></div>
       <div class="details"><span><?= $fetch_products['details']; ?></span></div>
       <div class="flex-btn">
          <a href="update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>

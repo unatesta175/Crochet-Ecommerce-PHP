@@ -52,18 +52,16 @@ include 'components/wishlist_cart.php';
       <div class="row">
          <div class="image-container">
             <div class="main-image">
-               <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
+               <img src="images/<?= $fetch_product['image_01']; ?>" alt="">
             </div>
             <div class="sub-image">
-               <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
-               <img src="uploaded_img/<?= $fetch_product['image_02']; ?>" alt="">
-               <img src="uploaded_img/<?= $fetch_product['image_03']; ?>" alt="">
-            </div>
+               <img src="images/<?= $fetch_product['image_01']; ?>" alt="">
+             
          </div>
          <div class="content">
             <div class="name"><?= $fetch_product['name']; ?></div>
             <div class="flex">
-               <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
+               <div class="price"><span>RM</span><?= $fetch_product['price']; ?></div>
                <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
             </div>
             <div class="details"><?= $fetch_product['details']; ?></div>

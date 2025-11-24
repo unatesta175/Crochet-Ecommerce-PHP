@@ -14,15 +14,15 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['order'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8');
    $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $number = htmlspecialchars(strip_tags($number), ENT_QUOTES, 'UTF-8');
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $email = htmlspecialchars(strip_tags($email), ENT_QUOTES, 'UTF-8');
    $method = $_POST['method'];
-   $method = filter_var($method, FILTER_SANITIZE_STRING);
+   $method = htmlspecialchars(strip_tags($method), ENT_QUOTES, 'UTF-8');
    $address = 'flat no. '. $_POST['flat'] .', '. $_POST['street'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
-   $address = filter_var($address, FILTER_SANITIZE_STRING);
+   $address = htmlspecialchars(strip_tags($address), ENT_QUOTES, 'UTF-8');
    $total_products = $_POST['total_products'];
    $total_price = $_POST['total_price'];
 
@@ -83,7 +83,7 @@ if(isset($_POST['order'])){
                $total_products = implode($cart_items);
                $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
       ?>
-         <p> <?= $fetch_cart['name']; ?> <span>(<?= 'RM'.$fetch_cart['price'].'/- x '. $fetch_cart['quantity']; ?>)</span> </p>
+         <p> <?= $fetch_cart['name']; ?> <span>(<?= 'RM'.$fetch_cart['price'].' x '. $fetch_cart['quantity']; ?>)</span> </p>
       <?php
             }
          }else{
@@ -92,7 +92,7 @@ if(isset($_POST['order'])){
       ?>
          <input type="hidden" name="total_products" value="<?= $total_products; ?>">
          <input type="hidden" name="total_price" value="<?= $grand_total; ?>" value="">
-         <div class="grand-total">grand total : <span>RM<?= $grand_total; ?>/-</span></div>
+         <div class="grand-total">grand total : <span>RM<?= $grand_total; ?></span></div>
       </div>
 
       <h3>place your orders</h3>
@@ -100,7 +100,7 @@ if(isset($_POST['order'])){
       <div class="flex">
          <div class="inputBox">
             <span>your name :</span>
-            <input type="text" name="name" placeholder="enter your name" class="box" maxlength="20" required>
+            <input type="text" name="name" placeholder="enter your name" class="box" maxlength="255" required>
          </div>
          <div class="inputBox">
             <span>your number :</span>

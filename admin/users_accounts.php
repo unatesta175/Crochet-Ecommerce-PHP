@@ -59,7 +59,7 @@ if(isset($_GET['delete'])){
    <div class="box">
       <p> user id : <span><?= $fetch_accounts['id']; ?></span> </p>
       <p> username : <span><?= $fetch_accounts['name']; ?></span> </p>
-      <p> email : <span><?= $fetch_accounts['email']; ?></span> </p>
+      <p style="font-size: 1.5rem;"> email : <span><?= $fetch_accounts['email']; ?></span> </p>
       <a href="users_accounts.php?delete=<?= $fetch_accounts['id']; ?>" onclick="return confirm('delete this account? the user related information will also be delete!')" class="delete-btn">delete</a>
    </div>
    <?php
